@@ -2,20 +2,24 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 function SignupForm({ onSubmit }) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ username, email, password, confirmPassword });
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    onSubmit({ ...formData });
+    setFormData({
+      userName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
 
   return (
@@ -31,8 +35,8 @@ function SignupForm({ onSubmit }) {
       <input
         type="text"
         placeholder="Enter your username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={formData.userName}
+        onChange={(e) => setFormData({ ...formData, userName: e.target.value })}
         className="border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
@@ -43,8 +47,8 @@ function SignupForm({ onSubmit }) {
       <input
         type="email"
         placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         className="border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
@@ -56,8 +60,8 @@ function SignupForm({ onSubmit }) {
         <input
           type={showPassword ? "text" : "password"}
           placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           className=" w-full border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
@@ -80,8 +84,8 @@ function SignupForm({ onSubmit }) {
         <input
           type={showConfirmPassword ? "text" : "password"}
           placeholder="Confirm Your password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={formData.confirmPassword}
+          onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
           className=" w-full border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />

@@ -3,8 +3,8 @@ import SignupForm from "@/app/components/SignupForm";
 import { useRouter as Router } from "next/navigation";
 function SignupPage() {
     const router=Router()
-  const handleSignup = ({ username, email, password,confirmPassword }) => {
-    console.log("Signing up with", username, email, password,confirmPassword);
+  const handleSignup = (formData) => {
+    console.log("Signing up with", formData.userName, formData.email, formData.password,formData.confirmPassword);
     router.push("/pages/login");
   };
 

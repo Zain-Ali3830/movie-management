@@ -2,8 +2,8 @@
 import LoginForm from "@/app/components/LoginForm";
 
 function LoginPage() {
-  const handleLogin = ({ email, password }) => {
-    console.log("Logging in with", email, password);
+  const handleLogin = (formData) => {
+    console.log("Logging in with", formData.email, formData.password);
   };
 
   return (

@@ -3,13 +3,19 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function LoginForm({ onSubmit }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password });
+    onSubmit({ ...formData });
+     setFormData({
+    email: "",
+    password: "",
+  })
   };
 
   return (
@@ -25,8 +31,8 @@ export default function LoginForm({ onSubmit }) {
       <input
         type="email"
         placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value})}
         className="border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
@@ -38,8 +44,8 @@ export default function LoginForm({ onSubmit }) {
         <input
           type={showPassword ? "text" : "password"}
           placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value})}
           className="border border-gray-600 bg-gray-800 text-white p-2 rounded-lg w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
