@@ -1,9 +1,16 @@
-'use client'
+"use client";
 import LoginForm from "@/app/components/LoginForm";
-
+import { loginUser } from "@/app/API's/api.js";
 function LoginPage() {
-  const handleLogin = (formData) => {
+  const handleLogin = async (formData, setLoginFormData) => {
     console.log("Logging in with", formData.email, formData.password);
+    const res = await loginUser(formData);
+    if (res) {
+      setLoginFormData({
+        email: "",
+        password: "",
+      });
+    }
   };
 
   return (

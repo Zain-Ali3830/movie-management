@@ -13,13 +13,7 @@ function SignupForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...formData });
-    setFormData({
-      userName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    onSubmit({ ...formData },setFormData);
   };
 
   return (

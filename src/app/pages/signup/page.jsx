@@ -1,11 +1,21 @@
 'use client';
 import SignupForm from "@/app/components/SignupForm";
 import { useRouter as Router } from "next/navigation";
+import { signupUser } from "@/app/API's/api.js";
 function SignupPage() {
     const router=Router()
-  const handleSignup = (formData) => {
+  const handleSignup = async (formData,setFormData) => {
     console.log("Signing up with", formData.userName, formData.email, formData.password,formData.confirmPassword);
-    router.push("/pages/login");
+    const res= await signupUser(formData)
+    if(res){
+       setFormData({
+      userName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+        router.push('/pages/login')
+    }
   };
 
   return (
