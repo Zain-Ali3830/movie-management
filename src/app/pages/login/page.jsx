@@ -5,7 +5,9 @@ function LoginPage() {
   const handleLogin = async (formData, setLoginFormData) => {
     console.log("Logging in with", formData.email, formData.password);
     const res = await loginUser(formData);
+    console.log(res);
     if (res) {
+      localStorage.setItem("token", res.token);
       setLoginFormData({
         email: "",
         password: "",
