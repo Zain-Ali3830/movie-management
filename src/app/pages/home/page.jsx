@@ -1,4 +1,5 @@
 'use client';
+import MovieCard from "@/app/components/moviecard";
 import Navbar from "@/app/components/navbar";
 import Slider from "@/app/components/slider";
 function HomePage() {
@@ -10,6 +11,7 @@ function HomePage() {
       <h1 className="text-4xl font-bold text-white text-center px-1">Movie Night Starts Here</h1>
     </div>
           <Slider />
+          <MovieCard />
    </div>
     </>
 

@@ -19,3 +19,13 @@ export const loginUser = async (userData) => {
     throw error;
   }
 };
+
+
+export const getAllMovies = async () => {
+  try {
+    const movies = await axios.get(`${BASE_URL}/getmovies`);
+    return movies.data;
+  } catch (error) {
+    throw error;
+  }
+};
