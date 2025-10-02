@@ -26,6 +26,7 @@ function MovieCard() {
                       xl:grid-cols-5">
         {moviesData.map((movie) => {
           return (
+           <Link key={movie.id} href={'/movieById/'+movie.id}>
             <div
               key={movie.id}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
@@ -52,6 +53,7 @@ function MovieCard() {
                 </div>
               </div>
             </div>
+           </Link>
           );
         })}
       </div>
