@@ -40,3 +40,13 @@ export const getMovieById = async (id) => {
     throw error;
   }
 };
+
+
+export const bookTicketAPI = async (ticketData) => {
+  try {
+    const ticket = await axios.post(`${BASE_URL}/bookticket`, ticketData);
+    return ticket.data;
+  } catch (error) {
+    throw error;
+  }
+};
