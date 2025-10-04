@@ -8,10 +8,10 @@ function Footer() {
           <div>
             <h2 className="text-lg font-semibold text-white mb-4">Quick Links</h2>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-blue-400">Home</a></li>
-              <li><a href="#" className="hover:text-blue-400">About</a></li>
-              <li><a href="#" className="hover:text-blue-400">Contact</a></li>
-              <li><a href="#" className="hover:text-blue-400">FAQ</a></li>
+              <li><a href="/pages/home" className="hover:text-blue-400">Home</a></li>
+              <li><a href="/pages/about" className="hover:text-blue-400">About</a></li>
+              <li><a href="/pages/contact" className="hover:text-blue-400">Contact</a></li>
+              <li><a href="/" className="hover:text-blue-400">FAQ</a></li>
             </ul>
           </div>
 
