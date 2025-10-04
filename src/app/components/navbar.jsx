@@ -21,7 +21,7 @@ function Navbar() {
             <Link href="/pages/home" className="hover:text-blue-400 transition duration-300">
               Home
             </Link>
-            <Link href="/about" className="hover:text-blue-400 transition duration-300">
+            <Link href="/pages/about" className="hover:text-blue-400 transition duration-300">
               About
             </Link>
             <Link href="/contact" className="hover:text-blue-400 transition duration-300">
@@ -63,7 +63,7 @@ function Navbar() {
             Home
           </Link>
           <Link
-            href="/about"
+            href="/pages/about"
             className="hover:text-blue-400 transition duration-300"
             onClick={() => setIsOpen(false)}
           >
