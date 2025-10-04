@@ -1,6 +1,18 @@
+'use client';
+import { useState } from "react";
+import {Toaster,toast} from "react-hot-toast";
 function Footer() {
+  const [email, setEmail] = useState("");
+  function handleNewsLetter() {
+    if (!email || !email.includes("@gmail.com")) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    toast.success("Subscribed to newsletter!");
+  }
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <footer className="bg-gradient-to-r from-slate-900 to-slate-800 text-gray-300 py-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
           
@@ -24,8 +36,11 @@ function Footer() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full p-2 rounded-l-md bg-slate-700 text-white focus:outline-none"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <button className="text-[#00b4d8] drop-shadow-[0_0_10px_#00b4d8] bg-[#1c2541] px-4 rounded-r-md">
+              <button onClick={handleNewsLetter} className="text-[#00b4d8] drop-shadow-[0_0_10px_#00b4d8] bg-[#1c2541] px-4 rounded-r-md cursor-pointer">
                 Subscribe
               </button>
             </div>
