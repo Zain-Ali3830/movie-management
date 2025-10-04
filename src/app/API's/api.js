@@ -50,3 +50,13 @@ export const bookTicketAPI = async (ticketData) => {
     throw error;
   }
 };
+
+
+export const contactMessage= async(messageData)=>{
+  try {
+    const message = await axios.post(`${BASE_URL}/contact`, messageData);
+    return message.data;
+  } catch (error) {
+    throw error;
+  }
+}
