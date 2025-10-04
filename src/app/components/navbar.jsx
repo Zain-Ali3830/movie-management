@@ -12,7 +12,7 @@ function Navbar() {
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between md:justify-between">
           
           {/* Left Side (Desktop) / Center (Mobile) */}
-          <h1 className="text-xl font-bold text-blue-500 tracking-wide text-center ">
+          <h1 className="text-xl font-bold text-[#00b4d8] drop-shadow-[0_0_10px_#00b4d8] text-center ">
             Movie Management
           </h1>
 
@@ -24,7 +24,7 @@ function Navbar() {
             <Link href="/pages/about" className="hover:text-blue-400 transition duration-300">
               About
             </Link>
-            <Link href="/contact" className="hover:text-blue-400 transition duration-300">
+            <Link href="/pages/contact" className="hover:text-blue-400 transition duration-300">
               Contact
             </Link>
           </div>
@@ -70,7 +70,7 @@ function Navbar() {
             About
           </Link>
           <Link
-            href="/contact"
+            href="/pages/contact"
             className="hover:text-blue-400 transition duration-300"
             onClick={() => setIsOpen(false)}
           >
