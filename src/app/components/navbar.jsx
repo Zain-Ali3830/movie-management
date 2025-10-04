@@ -18,7 +18,7 @@ function Navbar() {
 
           {/* Right Side Links (Hidden on small screens) */}
           <div className="hidden md:flex space-x-6">
-            <Link href="/" className="hover:text-blue-400 transition duration-300">
+            <Link href="/pages/home" className="hover:text-blue-400 transition duration-300">
               Home
             </Link>
             <Link href="/about" className="hover:text-blue-400 transition duration-300">
@@ -56,7 +56,7 @@ function Navbar() {
         {/* Menu Links */}
         <div className="flex flex-col items-start mt-16 space-y-6 px-6">
           <Link
-            href="/"
+            href="/pages/home"
             className="hover:text-blue-400 transition duration-300"
             onClick={() => setIsOpen(false)}
           >

@@ -1,13 +1,16 @@
 "use client";
 import LoginForm from "@/app/components/LoginForm";
 import { loginUser } from "@/app/API's/api.js";
+import { useRouter } from "next/navigation";
 function LoginPage() {
+  const router=useRouter()
   const handleLogin = async (formData, setLoginFormData) => {
     console.log("Logging in with", formData.email, formData.password);
     const res = await loginUser(formData);
     console.log(res);
     if (res) {
       localStorage.setItem("token", res.token);
+      router.push('/pages/home')
       setLoginFormData({
         email: "",
         password: "",
