@@ -59,80 +59,138 @@ function BookingForm({ movieTitle }) {
 
       {/* Booking Modal */}
       {isOpen && (
-        <form action="" onSubmit={(e) => e.preventDefault()}>
-          <div className="fixed inset-0  bg-opacity-50 backdrop-blur-sm  flex items-center justify-center z-50 min-h-screen p-4 transition-opacity duration-300">
-            <div className="bg-[#1c2541] text-white p-6 rounded-2xl shadow-lg w-[90%] max-w-md transform scale-95 opacity-0 animate-fadeIn">
-              <h2 className="text-2xl font-bold mb-4 text-center">
-                {movieTitle}
-              </h2>
-
-              {/* Location Select */}
-              <label className="block mb-2">Choose Location</label>
-              <select
-                className="w-full mb-4 p-2 rounded-lg text-black font-semibold"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className="bg-[#0b132b] rounded-2xl shadow-2xl w-full max-w-lg transform animate-fadeIn border border-gray-600">
+            {/* Header */}
+            <div className="relative px-8 py-6 border-b border-gray-600">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-gray-700 rounded-full transition-colors duration-200"
               >
-                <option value="">Select Location</option>
-                {locations.map((loc, index) => (
-                  <option key={index} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </select>
+                <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="text-center">
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  Book Your Ticket
+                </h2>
+                <p className="text-gray-300 text-sm">{movieTitle}</p>
+              </div>
+            </div>
+
+            {/* Form Content */}
+            <form onSubmit={(e) => e.preventDefault()} className="px-8 py-6 space-y-6">
+              {/* Location Select */}
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-300">
+                  Choose Location
+                </label>
+                <select
+                  className="w-full p-4 bg-gray-800 border-2 border-gray-600 rounded-xl text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200 appearance-none cursor-pointer hover:border-gray-500"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                >
+                  <option value="" className="bg-gray-800">Select Location</option>
+                  {locations.map((loc, index) => (
+                    <option key={index} value={loc} className="bg-gray-800">
+                      {loc}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               {/* Time Slot Select */}
-              <label className="block mb-2">Choose Time Slot</label>
-              <select
-                className="w-full mb-4 p-2 rounded-lg text-black font-semibold"
-                value={timeSlot}
-                onChange={(e) => setTimeSlot(e.target.value)}
-              >
-                <option value="">Select Time</option>
-                {timeSlots.map((slot, index) => (
-                  <option key={index} value={slot.slot}>
-                    {slot.slot}
-                  </option>
-                ))}
-              </select>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-300">
+                  Choose Time Slot
+                </label>
+                <select
+                  className="w-full p-4 bg-gray-800 border-2 border-gray-600 rounded-xl text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200 appearance-none cursor-pointer hover:border-gray-500"
+                  value={timeSlot}
+                  onChange={(e) => setTimeSlot(e.target.value)}
+                >
+                  <option value="" className="bg-gray-800">Select Time</option>
+                  {timeSlots.map((slot, index) => (
+                    <option key={index} value={slot.slot} className="bg-gray-800">
+                      {slot.slot}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-              {/* Ticket Price */}
+              {/* Ticket Price Display */}
               {ticketPrice > 0 && (
-                <p className="text-lg mb-4 text-center">
-                  💵 Ticket Price:{" "}
-                  <span className="text-yellow-400">{ticketPrice} PKR</span>
-                </p>
+                <div className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-2 border-gray-600 rounded-xl p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300 font-semibold">Total Price:</span>
+                    <span className="text-2xl font-bold text-yellow-400">
+                      ₨{ticketPrice}
+                    </span>
+                  </div>
+                </div>
               )}
 
-              {/* Confirm Button */}
-              <div className="flex justify-center gap-4">
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-4">
                 <button
+                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-6 py-2 bg-gray-600 rounded-lg hover:bg-gray-500 transition"
+                  className="flex-1 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 font-semibold rounded-xl transition-all duration-200 border border-gray-600"
                 >
                   Cancel
                 </button>
                 <button
+                  type="button"
                   onClick={handleConfirm}
                   disabled={!location || !timeSlot}
-                  className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-500 font-semibold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition disabled:opacity-50"
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed text-black font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:shadow-none"
                 >
-                  Confirm
+                  Confirm Booking
                 </button>
               </div>
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
       )}
 
       {/* Success Modal */}
       {successOpen && (
-        <div className="fixed top-1/3 left-1/2 transform -translate-x-1/2 bg-[#0b132b] text-white px-6 py-4 rounded-lg shadow-lg z-50 animate-slideDown">
-          <h3 className="font-bold">Booking Confirmed 🎉</h3>
-          <p>{movieTitle}</p>
-          <p>{location}</p>
-          <p>{timeSlot}</p>
-          <p>{ticketPrice} PKR</p>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className="bg-[#0b132b] rounded-2xl shadow-2xl w-full max-w-md transform animate-fadeIn border border-gray-600">
+            <div className="p-8 text-center">
+              {/* Success Icon */}
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-2 text-green-400">Booking Confirmed!</h3>
+                <p className="text-gray-300">Your ticket has been successfully booked</p>
+              </div>
+              
+              {/* Booking Details */}
+              <div className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-2 border-gray-600 rounded-xl p-4 space-y-3 text-left">
+                <div className="flex justify-between">
+                  <span className="text-gray-300">Movie:</span>
+                  <span className="text-white font-semibold">{movieTitle}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-300">Location:</span>
+                  <span className="text-white font-semibold">{location}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-300">Time:</span>
+                  <span className="text-white font-semibold">{timeSlot}</span>
+                </div>
+                <div className="flex justify-between border-t border-gray-600 pt-3 mt-3">
+                  <span className="text-gray-300 font-semibold">Total:</span>
+                  <span className="text-yellow-400 font-bold text-lg">₨{ticketPrice}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
