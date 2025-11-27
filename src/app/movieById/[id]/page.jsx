@@ -13,11 +13,116 @@ function MovieDetails({ params }) {
   const { id } = use(params);
   const [movie, setMovie] = useState(null);
 
+  const mockMovies = [
+    {
+      id: 1,
+      title: "Avengers: Endgame",
+      description: "The Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",
+      rating: 8.4,
+      duration: "3h 1m",
+      genre: "Action, Adventure, Drama",
+      director: "Anthony Russo, Joe Russo",
+      writers: "Christopher Markus, Stephen McFeely",
+      release_date: "2019-04-26",
+      picurl: "/movie 1.jpg"
+    },
+    {
+      id: 2,
+      title: "The Dark Knight",
+      description: "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into anarchy.",
+      rating: 9.0,
+      duration: "2h 32m",
+      genre: "Action, Crime, Drama",
+      director: "Christopher Nolan",
+      writers: "Jonathan Nolan, Christopher Nolan",
+      release_date: "2008-07-18",
+      picurl: "/movie 2.jpg"
+    },
+    {
+      id: 3,
+      title: "Inception",
+      description: "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea.",
+      rating: 8.8,
+      duration: "2h 28m",
+      genre: "Action, Sci-Fi, Thriller",
+      director: "Christopher Nolan",
+      writers: "Christopher Nolan",
+      release_date: "2010-07-16",
+      picurl: "/movie 3.jpg"
+    },
+    {
+      id: 4,
+      title: "Interstellar",
+      description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      rating: 8.6,
+      duration: "2h 49m",
+      genre: "Adventure, Drama, Sci-Fi",
+      director: "Christopher Nolan",
+      writers: "Jonathan Nolan, Christopher Nolan",
+      release_date: "2014-11-07",
+      picurl: "/movie 4.jpg"
+    },
+    {
+      id: 5,
+      title: "The Matrix",
+      description: "A computer programmer discovers that reality as he knows it is a simulation and joins a rebellion to free humanity.",
+      rating: 8.7,
+      duration: "2h 16m",
+      genre: "Action, Sci-Fi",
+      director: "Lana Wachowski, Lilly Wachowski",
+      writers: "Lana Wachowski, Lilly Wachowski",
+      release_date: "1999-03-31",
+      picurl: "/movie 5.jpg"
+    },
+    {
+      id: 6,
+      title: "Pulp Fiction",
+      description: "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+      rating: 8.9,
+      duration: "2h 34m",
+      genre: "Crime, Drama",
+      director: "Quentin Tarantino",
+      writers: "Quentin Tarantino, Roger Avary",
+      release_date: "1994-10-14",
+      picurl: "/movie 1.jpg"
+    },
+    {
+      id: 7,
+      title: "The Godfather",
+      description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      rating: 9.2,
+      duration: "2h 55m",
+      genre: "Crime, Drama",
+      director: "Francis Ford Coppola",
+      writers: "Mario Puzo, Francis Ford Coppola",
+      release_date: "1972-03-24",
+      picurl: "/movie 2.jpg"
+    },
+    {
+      id: 8,
+      title: "Forrest Gump",
+      description: "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.",
+      rating: 8.8,
+      duration: "2h 22m",
+      genre: "Drama, Romance",
+      director: "Robert Zemeckis",
+      writers: "Winston Groom, Eric Roth",
+      release_date: "1994-07-06",
+      picurl: "/movie 3.jpg"
+    }
+  ];
+
   useEffect(() => {
     const fetchMovie = async () => {
       if (!id) return;
-      const movieData = await getMovieById(id);
-      setMovie(movieData);
+      try {
+        const movieData = await getMovieById(id);
+        setMovie(movieData);
+      } catch (error) {
+        // Fallback to mock data
+        const mockMovie = mockMovies.find(m => m.id === parseInt(id));
+        setMovie(mockMovie);
+      }
     };
     fetchMovie();
   }, [id]);
