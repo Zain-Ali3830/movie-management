@@ -59,4 +59,22 @@ export const contactMessage= async(messageData)=>{
   } catch (error) {
     throw error;
   }
-}
+};
+
+export const updateMovie = async (id, movieData) => {
+  try {
+    const movie = await axios.put(`${BASE_URL}/movies/${id}`, movieData);
+    return movie.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteMovie = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/movies/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

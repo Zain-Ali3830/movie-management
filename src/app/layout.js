@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const excludedPaths = ["/pages/login", "/pages/signup", "/"];
+  const excludedPaths = ["/pages/login", "/pages/signup"];
   const shouldShowHeaderFooter = !excludedPaths.includes(pathname);
   console.log("Current Pathname:", pathname, shouldShowHeaderFooter);
 

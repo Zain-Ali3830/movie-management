@@ -59,12 +59,6 @@ export default function LoginForm({ onSubmit }) {
       >
         Login
       </button>
-        <div className="flex flex-col justify-between items-center">
-        <p className="text-sm text-gray-300">Don't have an account?</p>
-        <a href="/pages/signup" className="text-blue-500 hover:underline">
-          Sign Up
-        </a>
-      </div>
     </form>
   );
 }
